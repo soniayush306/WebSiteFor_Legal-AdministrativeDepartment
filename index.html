@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Secure Digital Document Management System for Legal and Investigation Documents - Department of Legal and Administrative Affairs, Government of India" />
+  <meta name="keywords" content="NLADR, Indian Legal Repository, Evidence Management, Case Diary, Sec 65B, EOW, Law Ministry" />
+  <meta name="author" content="Department of Legal and Administrative Affairs, Govt of India" />
+  <title>Legal & Administrative Department | Secure Digital Document Management System (NLADR)</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/gov-theme.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+  <!-- National Tricolor Banner Bar -->
+  <div class="gov-tricolor-bar">
+    <div class="stripe-saffron"></div>
+    <div class="stripe-white"></div>
+    <div class="stripe-green"></div>
+  </div>
+
+  <!-- Government Accessibility & Quick Utilities Bar -->
+  <header class="gov-top-util-bar">
+    <div class="top-util-left">
+      <span>भारत सरकार | Government of India</span>
+      <span>•</span>
+      <span>विधि और न्याय मंत्रालय | Ministry of Law and Justice</span>
+    </div>
+    <div class="top-util-right">
+      <button id="btnLangToggle" data-lang="en">
+        🌐 <span id="currentLangLabel">हिन्दी</span>
+      </button>
+      <span>|</span>
+      <div class="font-resizer-group">
+        <button id="btnFontDecrease" title="Decrease Font Size">A-</button>
+        <button id="btnFontNormal" title="Normal Font Size">A</button>
+        <button id="btnFontIncrease" title="Increase Font Size">A+</button>
+      </div>
+      <span>|</span>
+      <button id="btnHighContrast" title="High Contrast Mode">👁️ Contrast</button>
+      <button id="btnThemeToggle" title="Toggle Theme">🌓 Theme</button>
+    </div>
+  </header>
+
+  <!-- Master Government Header -->
+  <div class="gov-main-header">
+    <div class="gov-header-content">
+      
+      <!-- Emblem & Branding -->
+      <div class="emblem-brand-combo">
+        <!-- Official State Emblem of India (Ashoka Lion Capital SVG) -->
+        <svg class="national-emblem-svg" viewBox="0 0 100 125" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="46" stroke="#c59b27" stroke-width="2.5" fill="rgba(197, 155, 39, 0.08)"/>
+          <!-- Lion Capital Simplified Heraldic Representation -->
+          <path d="M42 22C42 18 45 15 50 15C55 15 58 18 58 22C61 21 66 23 66 28C66 33 62 36 59 38C61 41 62 45 61 49C59 56 55 60 50 62C45 60 41 56 39 49C38 45 39 41 41 38C38 36 34 33 34 28C34 23 39 21 42 22Z" fill="#ffd875" stroke="#c59b27" stroke-width="1.5"/>
+          <circle cx="46" cy="27" r="1.5" fill="#0a192f"/>
+          <circle cx="54" cy="27" r="1.5" fill="#0a192f"/>
+          <!-- Ashoka Chakra Base -->
+          <rect x="30" y="65" width="40" height="8" rx="2" fill="#c59b27"/>
+          <circle cx="50" cy="80" r="9" stroke="#002266" stroke-width="2" fill="#ffffff"/>
+          <!-- 24 Spokes Representation -->
+          <circle cx="50" cy="80" r="1.5" fill="#002266"/>
+          <line x1="50" y1="71" x2="50" y2="89" stroke="#002266" stroke-width="1"/>
+          <line x1="41" y1="80" x2="59" y2="80" stroke="#002266" stroke-width="1"/>
+          <line x1="43.6" y1="73.6" x2="56.4" y2="86.4" stroke="#002266" stroke-width="1"/>
+          <line x1="43.6" y1="86.4" x2="56.4" y2="73.6" stroke="#002266" stroke-width="1"/>
+          <!-- Pedestal & Inscription Bar -->
+          <path d="M25 93H75L70 102H30L25 93Z" fill="#ffd875" stroke="#c59b27" stroke-width="1"/>
+          <text x="50" y="112" font-family="'Noto Sans Devanagari', serif" font-size="7.5" font-weight="700" fill="#ffffff" text-anchor="middle">सत्यमेव जयते</text>
+        </svg>
+
+        <div class="brand-text-container">
+          <div class="brand-hierarchy-hindi">विधि एवं प्रशासनिक कार्य विभाग • भारत सरकार</div>
+          <div class="brand-hierarchy-english">Department of Legal and Administrative Affairs</div>
+          <h1 class="portal-title-english">National Legal & Investigation Document Repository</h1>
+          <div class="portal-subtitle">Secure Digital Evidence, Judicial Case Flow & Administrative Allocation System (NLADR)</div>
+        </div>
+      </div>
+
+      <!-- Quick Search & Security Badges -->
+      <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.6rem;">
+        <div style="position: relative; width: 280px;">
+          <input type="text" id="globalCaseSearch" class="form-control" style="background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.25); color: #ffffff; padding: 0.45rem 0.75rem 0.45rem 2rem; font-size: 0.8rem;" placeholder="Search Case / FIR / Dossier..." />
+          <span style="position: absolute; left: 0.65rem; top: 50%; transform: translateY(-50%); font-size: 0.8rem; color: #b0c4de;">🔍</span>
+        </div>
+
+        <div class="header-badges-group">
+          <div class="cert-pill accent-gold">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Sec 65B Certified
+          </div>
+          <div class="cert-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            256-Bit TLS
+          </div>
+          <div class="cert-pill">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            ISO 27001
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Live Government Announcement Marquee Ticker -->
+  <div class="gov-announcement-ticker">
+    <div class="ticker-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L1 21h22L12 2zm0 4l7.53 13H4.47L12 6zm-1 5v4h2v-4h-2zm0 6v2h2v-2h-2z"/></svg>
+      Official Notification
+    </div>
+    <div class="ticker-text-wrapper">
+      <div class="ticker-marquee">
+        <span>MHA Directive: Cryptographic SHA-256 evidence hashing mandatory for all Section 173 CrPC / Sec 193 BNSS charge-sheet filings</span>
+        <span>E-Courts Interoperability: Supreme Court & High Court digital dossiers integrated under Unified Legal Grid</span>
+        <span>Citizen Helpdesk: Complainants can track FIR status & upload supplementary proof through DigiLocker authorization</span>
+        <span>National Cyber Crime Coordination Centre: Specialized Forensic Lab reports accessible to designated Investigator Officers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Role Switcher & Persona Bar (Provides seamless 1-click role testing) -->
+  <div class="demo-role-quickbar" id="demoQuickbar">
+    <div class="demo-role-left">
+      <span>⚙️ <strong>Role Quick-Switch:</strong></span>
+      <div class="demo-role-chips">
+        <button class="role-chip-btn active" data-role="Administrator">
+          👑 Administrator
+        </button>
+        <button class="role-chip-btn" data-role="Investigator Officer">
+          👮 Investigator Officer
+        </button>
+        <button class="role-chip-btn" data-role="Legal Officer">
+          ⚖️ Legal Officer
+        </button>
+        <button class="role-chip-btn" data-role="Record Officer">
+          📦 Record Officer
+        </button>
+        <button class="role-chip-btn" data-role="Citizen">
+          👤 Citizen (Rajesh Sharma)
+        </button>
+        <button class="role-chip-btn" data-role="Others">
+          🔬 Others (Forensic Specialist)
+        </button>
+      </div>
+    </div>
+
+    <div class="user-status-indicator">
+      <div id="navUserWrap" style="display: flex; align-items: center; gap: 0.6rem;">
+        <span class="user-status-badge dot">Active Session</span>
+        <span id="navUserName" style="font-weight: 700;">Dr. Arvind Sharma, IAS</span>
+        <span id="navUserRole" style="color: #b0c9e4; font-size: 0.74rem;">(Administrator)</span>
+      </div>
+      <button class="logout-nav-btn" id="logoutNavBtn">
+        Secure Logout
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Viewport Container -->
+  <main class="app-viewport">
+
+    <!-- VIEW 1: Authentication Portal (Shown when logged out) -->
+    <section id="authView" style="display: none;">
+      <div class="auth-wrapper">
+        
+        <!-- Hero Information Pane -->
+        <div class="auth-hero-pane">
+          <div>
+            <div class="auth-dept-emblem">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(197, 155, 39, 0.2); border: 2px solid var(--gov-gold); display: flex; align-items: center; justify-content: center; font-size: 1.3rem;">
+                ⚖️
+              </div>
+              <div>
+                <div style="font-size: 0.76rem; color: var(--gov-saffron); font-weight: 700; text-transform: uppercase;">Legal & Administrative Department</div>
+                <div style="font-size: 0.72rem; color: #a4c0de;">Government of India Official Depository</div>
+              </div>
+            </div>
+
+            <h2 class="auth-hero-title">National Legal & Investigation Document Repository</h2>
+            <p class="auth-hero-lead">
+              Restricted National Portal for Judicial Officers, Investigation Personnel, Public Prosecutors, Record Custodians, and Registered Citizens.
+            </p>
+
+            <ul class="auth-feature-list">
+              <li class="auth-feature-item">
+                <span class="auth-feature-icon">🛡️</span>
+                <span><strong>Role-Based Cryptographic Isolation:</strong> Strict jurisdictional access controls adhering to national digital security norms.</span>
+              </li>
+              <li class="auth-feature-item">
+                <span class="auth-feature-icon">📜</span>
+                <span><strong>Section 65B Evidence Integrity:</strong> Real-time SHA-256 digital fingerprinting ensures zero-tampering evidence admissibility.</span>
+              </li>
+              <li class="auth-feature-item">
+                <span class="auth-feature-icon">⚖️</span>
+                <span><strong>Citizen Transparency:</strong> Citizens can monitor the real-time status of their own petitions and furnish supplementary documents.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="auth-compliance-footer">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+            <span>Authorized institutional use only. Unauthorized login attempts are monitored under the Information Technology Act 2000.</span>
+          </div>
+        </div>
+
+        <!-- Form Pane (Login / Register Tabs) -->
+        <div class="auth-form-pane">
+          
+          <div class="auth-tabs-nav">
+            <button class="auth-tab-btn active" id="tabLogin">Official Sign In</button>
+            <button class="auth-tab-btn" id="tabRegister">New User Registration</button>
+          </div>
+
+          <!-- 1. LOGIN FORM -->
+          <form id="formLogin">
+            <h3 class="auth-form-title">Institutional Access Portal</h3>
+            <p class="auth-form-desc">Select your designated stakeholder role to proceed to your secure console.</p>
+
+            <!-- Role Selector -->
+            <div class="form-group">
+              <label class="form-label required" for="loginRoleSelect">Designated Stakeholder Role</label>
+              <select class="form-control" id="loginRoleSelect" required>
+                <option value="Administrator">Administrator (Controller & Case Allocator)</option>
+                <option value="Investigator Officer">Investigator Officer (IO / Police / EOW)</option>
+                <option value="Legal Officer">Legal Officer (Public Prosecutor / Standing Counsel)</option>
+                <option value="Record Officer">Record Officer (Digital & Physical Vault Custodian)</option>
+                <option value="Citizen">Citizen (Complainant / Petitioner)</option>
+                <option value="Others">Others (Allied Agencies / Forensics / Magistrates)</option>
+              </select>
+            </div>
+
+            <!-- Dynamic 'Others' Conditional Field (Appears when Others is chosen) -->
+            <div class="conditional-field-box" id="loginConditionalBox" style="display: none;">
+              <label class="form-label required" for="loginCustomRoleInput" style="color: var(--gov-saffron-dark);">
+                Specify Designation, Allied Agency or Institutional Wing
+              </label>
+              <input type="text" class="form-control" id="loginCustomRoleInput" placeholder="e.g. Director CFSL, Cyber Forensic Expert, Special Magistrate..." />
+              <div style="font-size: 0.72rem; color: #825000; margin-top: 4px;">
+                Required for external specialized officers and technical forensic consultants.
+              </div>
+            </div>
+
+            <!-- Identifier (Username / Badge / Mobile) -->
+            <div class="form-group">
+              <label class="form-label required" for="loginIdentifier">Officer Badge ID / Govt Email / Aadhaar ID</label>
+              <input type="text" class="form-control" id="loginIdentifier" placeholder="e.g. admin.sharma / IPS-2012 / citizen.rajesh" value="admin.sharma" required />
+            </div>
+
+            <!-- Password -->
+            <div class="form-group">
+              <label class="form-label required" for="loginPassword">Access Key / Password</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="••••••••••••" value="GovtSecured@2026" required />
+            </div>
+
+            <!-- Visual Security Captcha -->
+            <div class="form-group">
+              <label class="form-label required" for="loginCaptchaInput">Security Code (Captcha)</label>
+              <div class="captcha-container">
+                <div class="captcha-display" id="captchaDisplay">ABCD5</div>
+                <button type="button" class="captcha-refresh-btn" title="Refresh Captcha">🔄</button>
+                <input type="text" class="form-control" id="loginCaptchaInput" placeholder="Enter code" style="max-width: 140px; text-transform: uppercase;" required />
+              </div>
+            </div>
+
+            <!-- OTP Simulation Checkbox -->
+            <div class="form-group" style="margin-top: 0.5rem;">
+              <label style="font-size: 0.8rem; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                <input type="checkbox" id="chkGovOtp" checked />
+                <span>Verify via DigiLocker / e-Pramaan High-Assurance Protocol</span>
+              </label>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top: 1.25rem;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+              Authenticate & Enter Repository
+            </button>
+          </form>
+
+          <!-- 2. REGISTRATION FORM (Submits to Administrator's Approval Queue) -->
+          <form id="formRegister" style="display: none;">
+            <h3 class="auth-form-title">Registration & Clearance Request</h3>
+            <p class="auth-form-desc">Apply for access credentials. All submissions require Administrator clearance.</p>
+
+            <div class="form-group">
+              <label class="form-label required" for="regFullName">Full Legal Name</label>
+              <input type="text" class="form-control" id="regFullName" placeholder="e.g. Dr. K. S. Ramanujan / Insp. Neha Sundaram" required />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label required" for="regEmail">Official / Personal Email</label>
+                <input type="email" class="form-control" id="regEmail" placeholder="officer@gov.in" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label required" for="regPhone">Mobile Number</label>
+                <input type="tel" class="form-control" id="regPhone" placeholder="+91 98123 45678" required />
+              </div>
+            </div>
+
+            <!-- Role to Request -->
+            <div class="form-group">
+              <label class="form-label required" for="regRoleSelect">Role Requested</label>
+              <select class="form-control" id="regRoleSelect" required>
+                <option value="Investigator Officer">Investigator Officer</option>
+                <option value="Legal Officer">Legal Officer / Public Prosecutor</option>
+                <option value="Record Officer">Record Officer / Vault Custodian</option>
+                <option value="Citizen">Citizen (Complainant / Petitioner)</option>
+                <option value="Others">Others (Allied Agency / Specialist)</option>
+              </select>
+            </div>
+
+            <!-- Dynamic 'Others' Conditional Box in Registration -->
+            <div class="conditional-field-box" id="regConditionalBox" style="display: none;">
+              <label class="form-label required" for="regCustomRoleInput" style="color: var(--gov-saffron-dark);">
+                Please Specify Your Designation, Wing or Agency
+              </label>
+              <input type="text" class="form-control" id="regCustomRoleInput" placeholder="e.g. CFSL Ballistics Expert, Judicial Clerk, Cyber Consultant..." />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="regDepartment">Department / Jurisdiction</label>
+              <input type="text" class="form-control" id="regDepartment" placeholder="e.g. Economic Offences Wing, Delhi Police / Bar Council" />
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 0.75rem;">
+              <div class="form-group">
+                <label class="form-label required" for="regIdType">ID Proof Type</label>
+                <select class="form-control" id="regIdType">
+                  <option>Police / Service Badge ID</option>
+                  <option>Bar Council Enrolment ID</option>
+                  <option>Govt Ministry Employee Card</option>
+                  <option>Aadhaar e-KYC Verification</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label required" for="regIdNumber">ID Proof Number</label>
+                <input type="text" class="form-control" id="regIdNumber" placeholder="ID number / Bar number" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="regReason">Statement of Need / Justification</label>
+              <textarea class="form-control" id="regReason" rows="2" placeholder="Briefly state why access to NLADR is required for official duties..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="regCaptchaInput">Security Code</label>
+              <div class="captcha-container">
+                <div class="captcha-display" id="regCaptchaDisplay">99XYZ</div>
+                <button type="button" class="captcha-refresh-btn" title="Refresh Captcha">🔄</button>
+                <input type="text" class="form-control" id="regCaptchaInput" placeholder="Code" style="max-width: 130px; text-transform: uppercase;" required />
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-saffron btn-block" style="margin-top: 1rem;">
+              Submit Access Application for Admin Clearance
+            </button>
+          </form>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 2: Dynamic Role Dashboard (Rendered by JS) -->
+    <section id="dashboardView">
+      <!-- Admin / Investigator / Legal / Record / Citizen Dashboard injected here -->
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       GLOBAL INTERACTIVE MODALS
+       ========================================================================== -->
+
+  <!-- 1. Case Allocation & Reassignment Modal (Administrator Power) -->
+  <div class="modal-backdrop" id="modalCaseAssignment">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Administrative Case Allocation & Reassignment
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form onsubmit="window.handleCaseAssignmentSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="assignCaseHiddenId" />
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 0.85rem; border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Selected Case Dossier:</div>
+            <div id="assignCaseDossierNumber" style="font-weight: 700; color: var(--gov-navy-deep); font-size: 0.95rem;"></div>
+            <div id="assignCaseTitle" style="font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px;"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="assignIOSelect">Designate Lead Investigator Officer (IO)</label>
+            <select class="form-control" id="assignIOSelect" required>
+              <!-- Populated by JS with IOs -->
+            </select>
+            <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 3px;">
+              The allocated IO will receive immediate custodial authority over the case diary and forensic exhibits.
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="assignLegalSelect">Designate Prosecuting Legal Officer / Public Prosecutor</label>
+            <select class="form-control" id="assignLegalSelect" required>
+              <!-- Populated by JS with Legal Officers -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="assignPrioritySelect">Case Priority & Urgency Classification</label>
+            <select class="form-control" id="assignPrioritySelect">
+              <option value="Urgent">Urgent (Daily Monitoring / High Profile)</option>
+              <option value="High">High (Weekly Progress Review)</option>
+              <option value="Normal">Normal (Routine Disposal Schedule)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="assignNotesInput">Administrative Directives & Instructions</label>
+            <textarea class="form-control" id="assignNotesInput" rows="3" placeholder="Enter special investigation directions, deadline for charge-sheet filing, or forensic mandates..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Authorize & Dispatch Assignment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Case Diary Entry Modal (Investigator Officer) -->
+  <div class="modal-backdrop" id="modalAddFinding">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Record Investigation Diary Finding (दैनिकी प्रविष्टि)
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form onsubmit="window.handleAddFindingSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="findingCaseHiddenId" />
+
+          <div class="form-group">
+            <label class="form-label required" for="findingTitle">Subject of Investigation Activity</label>
+            <input type="text" class="form-control" id="findingTitle" placeholder="e.g. Search & Seizure Panchnama at accused premises / Witness statement recorded" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="findingTag">Activity Category</label>
+            <select class="form-control" id="findingTag">
+              <option value="Field Seizure">Field Search & Seizure</option>
+              <option value="Witness Statement">Witness Testimony / Interrogation</option>
+              <option value="Forensic Lab">Forensic & Ballistics Finding</option>
+              <option value="Cyber Forensics">Cyber IP & Electronic Audit</option>
+              <option value="Financial Trace">Financial Bank Remittance Trace</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="findingDescription">Detailed Case Diary Observations</label>
+            <textarea class="form-control" id="findingDescription" rows="4" placeholder="Enter contemporaneous observations, witness details, articles seized, or forensic findings in compliance with CrPC/BNSS..." required></textarea>
+          </div>
+
+          <div style="font-size: 0.74rem; color: #506982; background: #eef4fb; padding: 0.6rem 0.8rem; border-radius: var(--radius-sm);">
+            🛡️ <strong>Statutory Notice:</strong> Diary entries recorded in NLADR are timestamped and assigned an immutable SHA-256 audit digest for judicial admissibility under Section 65B of the Indian Evidence Act.
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-saffron">Commit to Official Case Diary</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Cryptographic Evidence Upload Modal (Sec 65B Certified) -->
+  <div class="modal-backdrop" id="modalUploadEvidence">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Cryptographic Evidence Intake Vault
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form onsubmit="window.handleEvidenceUploadSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="evidenceCaseHiddenId" />
+
+          <div class="form-group">
+            <label class="form-label required" for="evidenceDocName">Document / Exhibit Title</label>
+            <input type="text" class="form-control" id="evidenceDocName" placeholder="e.g. Bank Statements Audit Report / CCTV Hard Drive Seizure Memo" required />
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label required" for="evidenceDocType">Exhibit Category</label>
+              <select class="form-control" id="evidenceDocType">
+                <option value="Forensic Evidence">Forensic Lab Report</option>
+                <option value="Seizure Memo">Seizure Memo / Panchnama</option>
+                <option value="Charge Sheet">Charge Sheet (Sec 173)</option>
+                <option value="Witness Affidavit">Witness Deposition / 164 Statement</option>
+                <option value="Supplementary Proof">Supplementary Citizen Proof</option>
+                <option value="Judicial Order">Judicial Order / Judgement</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label required" for="evidenceAccessLevel">Classification Level</label>
+              <select class="form-control" id="evidenceAccessLevel">
+                <option value="Confidential">Confidential</option>
+                <option value="Restricted">Restricted (Court & IO)</option>
+                <option value="Secret">Secret (Classified Evidence)</option>
+                <option value="Public Record">Public Record</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required">Simulated File Attachment</label>
+            <div style="border: 2px dashed var(--border-strong); padding: 1.25rem; text-align: center; border-radius: var(--radius-sm); background: #fbfcfe;">
+              <div style="font-size: 1.5rem; margin-bottom: 0.35rem;">📎</div>
+              <div style="font-size: 0.84rem; font-weight: 600; color: var(--gov-navy-deep);">Click to Select or Drop Evidence PDF / Raw Image</div>
+              <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 2px;">Supported: PDF, XML, ZIP, MP4, RAW • Max 250MB</div>
+            </div>
+          </div>
+
+          <div style="background: #f4f8fd; border: 1px solid #c9dff7; padding: 0.75rem 1rem; border-radius: var(--radius-sm); margin-top: 0.5rem;">
+            <div style="font-size: 0.72rem; font-weight: 700; color: var(--gov-ashoka-blue); text-transform: uppercase;">
+              Calculated Section 65B SHA-256 Digital Fingerprint:
+            </div>
+            <code id="evidenceHashPreview" style="font-size: 0.72rem; word-break: break-all; color: var(--gov-navy-deep); display: block; margin-top: 3px;">
+              Generating...
+            </code>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Admit Evidence into Digital Vault</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 4. Hearing Outcome & Court Rescheduling Modal (Legal Officer) -->
+  <div class="modal-backdrop" id="modalHearingOutcome">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          Update Judicial Hearing Outcome & Reschedule
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form onsubmit="window.handleHearingOutcomeSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="hearingCaseHiddenId" />
+
+          <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 0.85rem; border-radius: var(--radius-sm); margin-bottom: 1.25rem;">
+            <div style="font-size: 0.74rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase;">Case Matter:</div>
+            <div id="hearingCaseDossier" style="font-weight: 700; color: var(--gov-navy-deep); font-size: 0.92rem;"></div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label required" for="hearingNextDate">Next Court Hearing Date</label>
+              <input type="date" class="form-control" id="hearingNextDate" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="hearingStageInput">Hearing Stage</label>
+              <input type="text" class="form-control" id="hearingStageInput" placeholder="e.g. Prosecution Evidence (PW-3), Final Arguments..." required />
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;">
+            <div class="form-group">
+              <label class="form-label required" for="hearingCourtInput">Court Complex & Bench</label>
+              <input type="text" class="form-control" id="hearingCourtInput" placeholder="e.g. Patiala House Courts, Bench 4" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label required" for="hearingJudgeInput">Presiding Judge / Magistrate</label>
+              <input type="text" class="form-control" id="hearingJudgeInput" placeholder="e.g. Hon'ble Special Judge R. K. Goel" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="hearingNotesInput">Judicial Proceedings Note / Daily Order Summary</label>
+            <textarea class="form-control" id="hearingNotesInput" rows="3" placeholder="Enter summary of court proceedings, witness cross-examination outcome, bail status, or directions given by the Hon'ble Court..."></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Update Court Calendar & Proceedings</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. Citizen Representation / Grievance Modal -->
+  <div class="modal-backdrop" id="modalCitizenGrievance">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          Lodge Representation / Case Status Inquiry
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <form onsubmit="window.handleCitizenGrievanceSubmit(event)">
+        <div class="modal-body">
+          <input type="hidden" id="grievanceCaseHiddenId" />
+
+          <div class="form-group">
+            <label class="form-label required" for="grievanceSubject">Subject of Inquiry</label>
+            <input type="text" class="form-control" id="grievanceSubject" placeholder="e.g. Request for update on forensic recovery / witness scheduling" required />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label required" for="grievanceDetails">Detailed Representation</label>
+            <textarea class="form-control" id="grievanceDetails" rows="4" placeholder="Detail your query or grievance for the designated Investigating Officer or Supervisory Unit..." required></textarea>
+          </div>
+
+          <div style="font-size: 0.74rem; color: var(--text-muted);">
+            Inquiries lodged through this portal are directly routed to the Superintendent of Police / Lead IO and monitored by the Legal and Administrative Department.
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary modal-cancel-btn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Submit Official Representation</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 6. Official Printable Case Acknowledgment / e-Receipt Modal -->
+  <div class="modal-backdrop" id="modalReceipt">
+    <div class="modal-dialog" style="max-width: 720px;">
+      <div class="modal-header">
+        <div class="modal-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          Official Certified Case Acknowledgment Dossier
+        </div>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" style="background: #eef2f7; padding: 1.5rem;">
+        
+        <!-- Official Printable Sheet -->
+        <div class="official-receipt-sheet" id="printableReceiptArea">
+          <div class="receipt-header">
+            <div style="font-size: 0.8rem; font-weight: 700; color: #ff8b1f; letter-spacing: 0.5px;">भारत सरकार | GOVERNMENT OF INDIA</div>
+            <div style="font-size: 0.76rem; color: #4a5d73; font-weight: 600; text-transform: uppercase;">Department of Legal & Administrative Affairs</div>
+            <h3>National Legal & Investigation Document Repository (NLADR)</h3>
+            <div style="font-size: 0.78rem; color: #002266; font-weight: 700; margin-top: 4px;">CERTIFICATE OF CASE REGISTRATION & STATUS ACKNOWLEDGMENT</div>
+          </div>
+
+          <div class="receipt-grid">
+            <div class="receipt-row">
+              <span class="label">NLADR Case Dossier ID</span>
+              <span class="value" id="receiptCaseNo"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Police Station FIR Reference</span>
+              <span class="value" id="receiptFirNo"></span>
+            </div>
+            <div class="receipt-row" style="grid-column: span 2;">
+              <span class="label">Case Title / Matter</span>
+              <span class="value" id="receiptTitle"></span>
+            </div>
+            <div class="receipt-row" style="grid-column: span 2;">
+              <span class="label">Relevant Penal Statutes / Sections</span>
+              <span class="value" id="receiptStatute"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Registered Complainant</span>
+              <span class="value" id="receiptComplainant"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Designated Lead IO</span>
+              <span class="value" id="receiptIO"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Prosecuting Public Counsel</span>
+              <span class="value" id="receiptLegal"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Competent Trial Court</span>
+              <span class="value" id="receiptCourt"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Next Listed Hearing Date</span>
+              <span class="value" id="receiptHearing" style="color: #c92a2a;"></span>
+            </div>
+            <div class="receipt-row">
+              <span class="label">Current Procedural Status</span>
+              <span class="value" id="receiptStatus"></span>
+            </div>
+          </div>
+
+          <div style="border-top: 1px solid #d0dbe5; padding-top: 0.85rem; font-size: 0.72rem; color: #586e85; line-height: 1.5;">
+            This electronic acknowledgment has been generated from the secure cryptographic database of the Department of Legal and Administrative Affairs. In accordance with Section 65B of the Indian Evidence Act, this certified digital document does not require physical stamp or ink signature.
+          </div>
+
+          <div class="receipt-barcode">
+            <div>
+              <div style="font-family: 'Courier New', Courier, monospace; font-weight: 700; font-size: 0.9rem; letter-spacing: 2px;">||| | |||| | ||||| || |||||| | |||</div>
+              <div style="font-size: 0.68rem; color: #71849a;">AUTHENTICITY VERIFICATION KEY: 9942-8812-7741-BNS</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-size: 0.75rem; font-weight: 700; color: #002266;">Issue Date: <span id="receiptDate"></span></div>
+              <div style="font-size: 0.68rem; color: #117a07; font-weight: 600;">✓ VALIDATED UNDER DPDP ACT & EVIDENCE RULES</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-cancel-btn">Close</button>
+        <button type="button" class="btn btn-primary" onclick="window.print()">
+          🖨️ Print Certified Copy (PDF)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Global Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Government Portal Footer -->
+  <footer class="gov-site-footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h4>Department of Legal & Administrative Affairs</h4>
+        <p>
+          National Legal and Investigation Document Repository (NLADR). Developed under the Digital India Initiative to ensure tamper-proof electronic evidence preservation, transparent citizen tracking, and streamlined judicial coordination.
+        </p>
+        <div style="margin-top: 0.85rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+          <span style="font-size: 0.74rem; background: rgba(255,255,255,0.06); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">Digital India Compliant</span>
+          <span style="font-size: 0.74rem; background: rgba(255,255,255,0.06); padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);">National e-Governance Plan (NeGP)</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Quick Portals</h5>
+        <ul>
+          <li><a href="javascript:void(0)">Ministry of Law & Justice</a></li>
+          <li><a href="javascript:void(0)">e-Courts Services Portal</a></li>
+          <li><a href="javascript:void(0)">National Crime Records Bureau (NCRB)</a></li>
+          <li><a href="javascript:void(0)">Law Commission of India</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Statutory Acts</h5>
+        <ul>
+          <li><a href="javascript:void(0)">Bharatiya Nyaya Sanhita 2023</a></li>
+          <li><a href="javascript:void(0)">Bharatiya Nagarik Suraksha Sanhita</a></li>
+          <li><a href="javascript:void(0)">Bharatiya Sakshya Adhiniyam</a></li>
+          <li><a href="javascript:void(0)">Information Technology Act 2000</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Security & Helpdesk</h5>
+        <ul>
+          <li><a href="javascript:void(0)">Emergency Cyber Cell: 1930</a></li>
+          <li><a href="javascript:void(0)">Section 65B Certification Rules</a></li>
+          <li><a href="javascript:void(0)">Privacy & DPDP Compliance</a></li>
+          <li><a href="javascript:void(0)">National Informatics Centre (NIC)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom-legal">
+      <p>© 2026 Department of Legal and Administrative Affairs, Government of India. All Rights Reserved.</p>
+      <p>Hosted on National Cloud Infrastructure. Built in compliance with Guidelines for Indian Government Websites (GIGW).</p>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboards/admin.js"></script>
+  <script src="js/dashboards/investigator.js"></script>
+  <script src="js/dashboards/legal.js"></script>
+  <script src="js/dashboards/record.js"></script>
+  <script src="js/dashboards/citizen.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

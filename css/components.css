@@ -1,0 +1,1011 @@
+/* ==========================================================================
+   NATIONAL LEGAL & INVESTIGATION DOCUMENT REPOSITORY (NLADR)
+   Components, Cards, Tables, Modals, Badges, & Interactive UI Elements
+   ========================================================================== */
+
+/* --- Card Base Styles --- */
+.gov-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, border-color 0.2s;
+  overflow: hidden;
+}
+
+.gov-card:hover {
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0, 34, 102, 0.02);
+}
+
+.card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gov-navy-deep);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-subtitle {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.card-body {
+  padding: 1.25rem;
+}
+
+/* --- Authentication Portal Component --- */
+.auth-wrapper {
+  max-width: 960px;
+  margin: 1.5rem auto 3rem;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.auth-hero-pane {
+  background: linear-gradient(135deg, #0a1f38 0%, #102d4f 60%, #061526 100%);
+  color: #ffffff;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border-right: 3px solid var(--gov-gold);
+}
+
+.auth-hero-pane::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 180px;
+  height: 180px;
+  background-image: radial-gradient(circle, rgba(197, 155, 39, 0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.auth-dept-emblem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.auth-hero-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.45rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+.auth-hero-lead {
+  font-size: 0.88rem;
+  color: #b0c9e4;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.auth-feature-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 2rem;
+}
+
+.auth-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  color: #d1e2f3;
+}
+
+.auth-feature-icon {
+  color: var(--gov-gold);
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.auth-compliance-footer {
+  font-size: 0.74rem;
+  color: #7997b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Auth Form Pane */
+.auth-form-pane {
+  padding: 2.25rem 2rem;
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-tabs-nav {
+  display: flex;
+  border-bottom: 2px solid var(--border-subtle);
+  margin-bottom: 1.75rem;
+}
+
+.auth-tab-btn {
+  flex: 1;
+  padding: 0.65rem 0.5rem;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.auth-tab-btn.active {
+  color: var(--gov-ashoka-blue);
+  font-weight: 700;
+}
+
+.auth-tab-btn.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2.5px;
+  background-color: var(--gov-saffron);
+}
+
+.auth-form-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gov-navy-deep);
+  margin-bottom: 0.25rem;
+}
+
+.auth-form-desc {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Form Controls & Groups */
+.form-group {
+  margin-bottom: 1.15rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.35rem;
+}
+
+.form-label.required::after {
+  content: " *";
+  color: var(--status-urgent);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.88rem;
+  font-family: inherit;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--gov-ashoka-blue);
+  box-shadow: 0 0 0 3px rgba(0, 34, 102, 0.12);
+}
+
+/* Dynamic Conditional 'Others' Field */
+.conditional-field-box {
+  background: var(--gov-saffron-light);
+  border: 1.5px dashed var(--gov-saffron);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.15rem;
+  animation: fadeInDown 0.25s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.captcha-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.captcha-display {
+  background: #f0f3f8;
+  border: 1px dashed #7a94b3;
+  padding: 0.45rem 1rem;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: #1a385c;
+  text-decoration: line-through;
+  user-select: none;
+  border-radius: var(--radius-sm);
+  display: inline-flex;
+  align-items: center;
+}
+
+.captcha-refresh-btn {
+  background: none;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+  color: var(--gov-ashoka-blue);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.captcha-refresh-btn:hover {
+  background-color: #e8eef7;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background-color: var(--gov-ashoka-blue);
+  color: #ffffff;
+  border-color: var(--gov-ashoka-blue);
+}
+.btn-primary:hover {
+  background-color: #001744;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border-color: var(--border-strong);
+}
+.btn-secondary:hover {
+  background-color: #f0f4f9;
+}
+
+.btn-saffron {
+  background-color: var(--gov-saffron);
+  color: #102138;
+  font-weight: 700;
+  border-color: var(--gov-saffron-dark);
+}
+.btn-saffron:hover {
+  background-color: var(--gov-saffron-dark);
+  color: #ffffff;
+}
+
+.btn-success {
+  background-color: var(--gov-green);
+  color: #ffffff;
+  border-color: var(--gov-green-dark);
+}
+.btn-success:hover {
+  background-color: var(--gov-green-dark);
+}
+
+.btn-danger {
+  background-color: var(--status-urgent);
+  color: #ffffff;
+  border-color: #a81c1c;
+}
+.btn-danger:hover {
+  background-color: #a81c1c;
+}
+
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.78rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* --- Dashboard Header & Persona Banner --- */
+.dashboard-banner {
+  background: linear-gradient(135deg, #091e36 0%, #0d2847 100%);
+  color: #ffffff;
+  padding: 1.5rem 1.75rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.75rem;
+  border-left: 5px solid var(--gov-gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--shadow-md);
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+.banner-left {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.officer-avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--gov-gold);
+  color: #091e36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 1.2rem;
+  box-shadow: 0 0 12px rgba(197, 155, 39, 0.4);
+  border: 2px solid #ffffff;
+}
+
+.banner-info h2 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.banner-meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.82rem;
+  color: #b2c9e2;
+  margin-top: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.banner-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.banner-right {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+/* --- Metrics Grid --- */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.metric-card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.metric-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+}
+
+.metric-card.border-blue::before { background-color: var(--gov-ashoka-blue); }
+.metric-card.border-green::before { background-color: var(--gov-green); }
+.metric-card.border-orange::before { background-color: var(--gov-saffron); }
+.metric-card.border-red::before { background-color: var(--status-urgent); }
+.metric-card.border-gold::before { background-color: var(--gov-gold); }
+
+.metric-icon-wrap {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.metric-icon-wrap.blue { background: #e7f0fa; color: var(--gov-ashoka-blue); }
+.metric-icon-wrap.green { background: #eaf6ea; color: var(--gov-green); }
+.metric-icon-wrap.orange { background: #fff3e6; color: var(--gov-saffron-dark); }
+.metric-icon-wrap.red { background: #ffebeb; color: var(--status-urgent); }
+.metric-icon-wrap.gold { background: #fcf6e6; color: var(--gov-gold); }
+
+.metric-data {
+  flex: 1;
+}
+
+.metric-number {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--gov-navy-deep);
+  line-height: 1.2;
+}
+
+.metric-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+
+/* --- Badges & Status Indicators --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.badge-investigation {
+  background-color: #fff4e6;
+  color: #d9480f;
+  border: 1px solid #ffd8a8;
+}
+
+.badge-chargesheet {
+  background-color: #e7f5ff;
+  color: #1971c2;
+  border: 1px solid #a5d8ff;
+}
+
+.badge-trial {
+  background-color: #f3f0ff;
+  color: #6741d9;
+  border: 1px solid #d0bfff;
+}
+
+.badge-disposed {
+  background-color: #ebfbee;
+  color: #2b8a3e;
+  border: 1px solid #b2f2bb;
+}
+
+.badge-urgent {
+  background-color: #ffe3e3;
+  color: #c92a2a;
+  border: 1px solid #ffc9c9;
+}
+
+.badge-high {
+  background-color: #fff3bf;
+  color: #f08c00;
+  border: 1px solid #ffec99;
+}
+
+.badge-normal {
+  background-color: #f1f3f5;
+  color: #495057;
+  border: 1px solid #dee2e6;
+}
+
+.badge-secret {
+  background-color: #ffe8cc;
+  color: #d9480f;
+  border: 1px solid #ff922b;
+}
+
+.badge-confidential {
+  background-color: #e3fafc;
+  color: #0c8599;
+  border: 1px solid #66d9e8;
+}
+
+.badge-pending {
+  background-color: #fff9db;
+  color: #e67700;
+  border: 1px solid #ffe066;
+}
+
+.badge-approved {
+  background-color: #e6fcf5;
+  color: #0ca678;
+  border: 1px solid #63e6be;
+}
+
+.badge-rejected {
+  background-color: #fff5f5;
+  color: #fa5252;
+  border: 1px solid #ff8787;
+}
+
+/* --- Tables & Lists --- */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  text-align: left;
+}
+
+.gov-table th {
+  background: #f1f5fa;
+  color: var(--gov-navy-deep);
+  font-weight: 700;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--border-subtle);
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.gov-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.gov-table tbody tr:hover {
+  background-color: #f9fbfe;
+}
+
+.table-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem 1.25rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-subtle);
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.table-search-box {
+  position: relative;
+  min-width: 260px;
+}
+
+.table-search-box input {
+  padding-left: 2.2rem;
+}
+
+.table-search-box .search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+/* --- Visual Case Journey Stepper (For Citizens & Detailed View) --- */
+.journey-stepper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin: 2rem 0;
+}
+
+.journey-stepper::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 30px;
+  right: 30px;
+  height: 4px;
+  background-color: var(--border-subtle);
+  z-index: 1;
+}
+
+.journey-step {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  flex: 1;
+}
+
+.step-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  border: 3px solid var(--border-strong);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+  transition: all 0.3s;
+}
+
+.journey-step.completed .step-circle {
+  background-color: var(--gov-green);
+  border-color: var(--gov-green);
+  color: #ffffff;
+}
+
+.journey-step.active .step-circle {
+  background-color: var(--gov-saffron);
+  border-color: var(--gov-saffron);
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 139, 31, 0.25);
+}
+
+.step-label {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.journey-step.completed .step-label {
+  color: var(--gov-green-dark);
+}
+
+.journey-step.active .step-label {
+  color: var(--gov-saffron-dark);
+  font-weight: 700;
+}
+
+/* Progress bar inside table cell */
+.progress-container {
+  width: 100%;
+  height: 8px;
+  background: #e9ecef;
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: 4px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gov-ashoka-blue) 0%, var(--gov-saffron) 100%);
+  border-radius: var(--radius-full);
+  transition: width 0.3s;
+}
+
+/* --- Timeline & Case Findings Feed --- */
+.timeline-feed {
+  position: relative;
+  padding-left: 2rem;
+  margin-top: 1rem;
+}
+
+.timeline-feed::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  bottom: 0;
+  left: 7px;
+  width: 2px;
+  background-color: var(--border-subtle);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: -2rem;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: var(--bg-secondary);
+  border: 3px solid var(--gov-ashoka-blue);
+}
+
+.timeline-date {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.timeline-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--gov-navy-deep);
+  margin-bottom: 0.35rem;
+}
+
+.timeline-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* --- Modals --- */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(6, 17, 30, 0.65);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 1.5rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-dialog {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-lg);
+  width: 100%;
+  max-width: 650px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transform: translateY(15px);
+  transition: transform 0.2s ease;
+}
+
+.modal-backdrop.open .modal-dialog {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1rem 1.25rem;
+  background: linear-gradient(135deg, #091e36 0%, #0e2946 100%);
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--gov-gold);
+}
+
+.modal-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: #cadbee;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+.modal-close-btn:hover {
+  color: var(--gov-saffron);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+.modal-footer {
+  padding: 1rem 1.25rem;
+  background: #f8fafc;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+/* --- Official Printable Case Acknowledgment / e-Receipt --- */
+.official-receipt-sheet {
+  background: #ffffff;
+  color: #122133;
+  padding: 2.25rem;
+  border: 2px solid #002266;
+  position: relative;
+  font-family: 'Inter', sans-serif;
+  box-shadow: var(--shadow-md);
+}
+
+.official-receipt-sheet::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(0, 34, 102, 0.25);
+  pointer-events: none;
+}
+
+.official-receipt-sheet::after {
+  content: "OFFICIAL RECORD";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-30deg);
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: rgba(0, 34, 102, 0.04);
+  pointer-events: none;
+  letter-spacing: 10px;
+}
+
+.receipt-header {
+  text-align: center;
+  border-bottom: 2px solid #002266;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-header h3 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.25rem;
+  color: #002266;
+}
+
+.receipt-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  font-size: 0.84rem;
+  margin-bottom: 1.5rem;
+}
+
+.receipt-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.receipt-row .label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #586e85;
+  text-transform: uppercase;
+}
+
+.receipt-row .value {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #102138;
+}
+
+.receipt-barcode {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f3f6f9;
+  padding: 0.75rem 1rem;
+  border: 1px dashed #b0c2d6;
+  border-radius: var(--radius-sm);
+  margin-top: 1.5rem;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  pointer-events: none;
+}
+
+.toast {
+  background: #091e36;
+  color: #ffffff;
+  border-left: 4px solid var(--gov-saffron);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.25rem;
+  box-shadow: var(--shadow-lg);
+  font-size: 0.84rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  pointer-events: auto;
+  animation: slideInRight 0.3s ease-out;
+  max-width: 380px;
+}
+
+.toast.success { border-left-color: var(--gov-green); }
+.toast.urgent { border-left-color: var(--status-urgent); }
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}

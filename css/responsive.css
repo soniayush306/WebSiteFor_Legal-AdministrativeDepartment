@@ -1,0 +1,139 @@
+/* ==========================================================================
+   NATIONAL LEGAL & INVESTIGATION DOCUMENT REPOSITORY (NLADR)
+   Responsive Design & Print Media Rules
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .gov-header-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .header-badges-group {
+    align-self: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .auth-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .auth-hero-pane {
+    border-right: none;
+    border-bottom: 3px solid var(--gov-gold);
+    padding: 2rem 1.5rem;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gov-top-util-bar {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+    padding: 0.5rem 1rem;
+  }
+
+  .top-util-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .demo-role-quickbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0.75rem 1rem;
+  }
+
+  .dashboard-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .banner-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-stepper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+  }
+
+  .journey-stepper::before {
+    top: 20px;
+    bottom: 20px;
+    left: 18px;
+    width: 4px;
+    height: auto;
+    right: auto;
+  }
+
+  .journey-step {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+  }
+
+  .step-circle {
+    margin-bottom: 0;
+  }
+
+  .footer-top {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print Rules for Official Receipts & Case Dossiers */
+@media print {
+  .gov-tricolor-bar,
+  .gov-top-util-bar,
+  .gov-announcement-ticker,
+  .demo-role-quickbar,
+  .btn,
+  .modal-footer,
+  .modal-close-btn,
+  .gov-site-footer,
+  .toast-container {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  .modal-backdrop {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+  }
+
+  .modal-dialog {
+    box-shadow: none !important;
+    border: none !important;
+    max-width: 100% !important;
+    max-height: none !important;
+  }
+
+  .official-receipt-sheet {
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+    padding: 1.5rem !important;
+  }
+}
